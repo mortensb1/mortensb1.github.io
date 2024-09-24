@@ -9,12 +9,6 @@ function jump(x,y,z,id) {
     picture.setAttribute('position', `${x} ${y} ${z}`)
 }
 
-// Example: Change the rotation after 3 seconds
-// setTimeout(function() {
-//     console.log("hej")
-//     updateRotation(90, 0, 0); // Change rotation to 0 90 0
-// }, 100);
-
 let height = 0
 let up = true
 setInterval(() => {
@@ -28,3 +22,28 @@ setInterval(() => {
     }
     jump(0,0,-height,"VanGogh")
 }, 30)
+
+setTimeout(()=> {
+    findMark("markerVan")
+},10)
+
+function findMark(id) {
+    let mark = document.querySelector(`#${id}`)
+    mark.addEventListener("markerFound", () => {
+        let pos = getScreenPosition(mark)
+        showConfetti()
+    })
+}
+
+function showConfetti() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0.5, y: 0.6 }
+    });
+}
+
+function getScreenPosition(marker) {
+    let marker3DPos = marker.object3D.position
+    console.log(marker3DPos)
+}
