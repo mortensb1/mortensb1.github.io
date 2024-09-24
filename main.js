@@ -1,11 +1,11 @@
 // Function to update rotation dynamically
-function updateRotation(x, y, z) {
-    var pigModel = document.querySelector('#image1');
+function updateRotation(x, y, z,id) {
+    var pigModel = document.querySelector(`#${id}`);
     pigModel.setAttribute('rotation', `${x} ${y} ${z}`);
 }
 
-function jump(x,y,z) {
-    var picture = document.querySelector('#image1');
+function jump(x,y,z,id) {
+    var picture = document.querySelector(`#${id}`);
     picture.setAttribute('position', `${x} ${y} ${z}`)
 }
 
@@ -26,5 +26,5 @@ setInterval(() => {
     } else {
         up = true
     }
-    jump(0,0,-height)
+    jump(0,0,-height,"VanGogh")
 }, 30)
