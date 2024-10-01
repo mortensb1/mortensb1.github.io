@@ -5,9 +5,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="main.js"></script>
     <body style="margin : 0px; overflow: hidden;">
-        <a-scene embedded arjs>
+        <a-scene embedded arjs id="scene">
         <a-marker preset="hiro" 
-            id="markerVan"
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
@@ -20,8 +19,15 @@
                 obj-model="obj: url(models/Pig/test/Pig.obj);
                 mtl: url(models/Pig/test/Pig.mtl)"
                 ></a-entity>
+                <a-text id="text"
+                value="Van Gogh"
+                rotation="270 270 90"
+                position="0 0 1.2"
+                align="center"
+                ></a-text>
         </a-marker>
-        <a-marker type="pattern" preset="custom" url="Marker/chat.patt"
+        <!-- <a-marker type="pattern" preset="custom" url="Marker/chat.patt"
+            id="markerVan"
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
@@ -34,7 +40,19 @@
                 obj-model="obj: url(models/Pig/Abstract-Painting_Monumental-Figure.obj);
                 mtl: url(models/Pig/Abstract-Painting_Monumental-Figure.mtl)"
                 ></a-entity>
-        </a-marker>
+                <a-text id="text"
+                value="Sjov maleri"
+                rotation="270 270 90"
+                position="0 0 1.2"
+                align="center"
+                ></a-text>
+                <a-image 
+                src="models/Pig/Abstract-Painting_Monumental-Figure/Monumental_Figure.jpg"
+                rotation="90 180 0"
+                position="0 0 0"
+                scale="2 2"
+                ></a-image>
+        </a-marker> -->
         <a-entity camera></a-entity>
         </a-scene>
     </body>
