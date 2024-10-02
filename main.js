@@ -26,21 +26,13 @@ function createImage(imageUrl, newId, newText, imageLink) {
 
     scene.appendChild(marker)
 }
-function updateRotation(x, y, z, id) {
-    var pigModel = document.querySelector(`#${id}`);
-    pigModel.setAttribute('rotation', `${x} ${y} ${z}`);
-}
-
-function jump(x, y, z, id) {
-    var picture = document.querySelector(`#${id}`);
-    picture.setAttribute('position', `${x} ${y} ${z}`)
-}
 
 setInterval(() => {
 }, 30)
 
 setTimeout(()=> {
-    createImage("Marker/chat.patt", "test", "Maleri", "Images/Monumental_Figure.jpg")
+    createImage("Marker/chat.patt", "Gris", "Dette er en gris", "Images/Monumental_Figure.jpg")
+    createImage("Marker/pattern-marker.patt", "Cat", "Dette er en cat", "Images/Cat.jpg")
 
     let mark = document.querySelector(`#test`)
 
