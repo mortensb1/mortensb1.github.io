@@ -1,6 +1,9 @@
 let mouseX
 let mouseY
 
+let touchstartX = 0
+let touchendX = 0
+
 class ImageAR {
     constructor(imageUrl, newId, newText, imageLink) {
         this.textArr = newText;
@@ -62,11 +65,27 @@ function updateText(event) {
 }
 
 function changeImage(event) {
-    if (100 < event.clientX - mouseX || -100 > (event.clientX - mouseX)) {
+    if (10 < event.clientX - mouseX || -10 > (event.clientX - mouseX)) {
         image1.change("Images/Cat.jpg")
         image2.change("Images/Monumental_Figure.jpg")
     }
 }
+
+
+    
+function checkDirection() {
+    image1.change("Images/Cat.jpg")
+    image2.change("Images/Monumental_Figure.jpg")
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX
+})
+
+document.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX
+  checkDirection()
+})
 
 setTimeout(()=> {
     image1 = new ImageAR("Marker/chat.patt", "Gris", ["Dette er en gris", "Den er pink"], "Images/Monumental_Figure.jpg")
