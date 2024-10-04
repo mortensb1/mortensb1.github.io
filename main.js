@@ -1,3 +1,6 @@
+let mouseX
+let mouseY
+
 class ImageAR {
     constructor(imageUrl, newId, newText, imageLink) {
         this.textArr = newText;
@@ -10,6 +13,10 @@ class ImageAR {
         this.textNr++
         if (this.textNr >= this.textArr.length) this.textNr = 0;
         this.aText.setAttribute("value",this.textArr[this.textNr])
+    }
+
+    change(newImage) {
+        this.aImage.setAttribute("src",newImage)
     }
 
     createImage(imageUrl, newId, imageLink) {
@@ -44,19 +51,26 @@ class ImageAR {
 
 setInterval(() => {
 
-}, 8000)
+}, 10)
 
-function updateText() {
+function updateText(event) {
     image1.nextText();
     image2.nextText();
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
+}
+
+function changeImage(event) {
+    if (100 < event.clientX - mouseX || -100 > (event.clientX - mouseX)) {
+        image1.change("Images/Cat.jpg")
+        image2.change("Images/Monumental_Figure.jpg")
+    }
 }
 
 setTimeout(()=> {
     image1 = new ImageAR("Marker/chat.patt", "Gris", ["Dette er en gris", "Den er pink"], "Images/Monumental_Figure.jpg")
     image2 = new ImageAR("Marker/pattern-marker.patt", "Cat", ["Dette er en cat", "Den er gul"], "Images/Cat.jpg")
-
-    // onmousedown = image1.nextText()
 
     let mark = document.querySelector(`#Gris`)
 
