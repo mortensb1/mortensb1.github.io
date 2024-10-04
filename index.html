@@ -5,8 +5,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="main.js"></script>
     <body style="margin : 0px; overflow: hidden;">
-        <a-scene embedded arjs id="scene">
-        <a-marker preset="hiro" 
+        <a-scene embedded arjs id="scene" onmousedown="updateText()">
+        <!-- <a-marker preset="hiro" 
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
@@ -25,7 +25,7 @@
                 position="0 0 1.2"
                 align="center"
                 ></a-text>
-        </a-marker>
+        </a-marker> -->
         <!-- <a-marker type="pattern" preset="custom" url="Marker/chat.patt"
             id="markerVan"
             smooth="true"
