@@ -48,7 +48,7 @@ document.addEventListener('touchend', e => {
 })
 
 setTimeout(()=> {
-  image1 = new ImageAR("Marker/chat.patt", "Gris", images[0])
+  image1 = new ImageAR("Marker/chat.patt", "Gris", images[2])
   image2 = new ImageAR("Marker/pattern-marker.patt", "Cat", images[1])
   let mark = document.querySelector(`#Gris`)
 
