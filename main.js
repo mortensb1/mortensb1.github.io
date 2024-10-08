@@ -13,16 +13,18 @@ let images = [
 ]
 
 function updateText(event) {
-  image1.nextText();
-  image2.nextText();
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].nextText();
+  }
   mouseX = event.clientX;
   mouseY = event.clientY;
 
 }
 
 function changeImage() {
-  image1.change(images[Math.floor(Math.random() * images.length)])
-  image2.change(images[Math.floor(Math.random() * images.length)])
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].change(images[Math.floor(Math.random() * images.length)])
+  }
 }
 
 function swipeMouse(event) {
@@ -48,10 +50,14 @@ document.addEventListener('touchend', e => {
 })
 
 setTimeout(()=> {
-  image1 = new ImageAR("Marker/chat.patt", "Gris", images[2])
-  image2 = new ImageAR("Marker/pattern-marker.patt", "Cat", images[1])
-  let mark = document.querySelector(`#Gris`)
+  markers = [
+    new ImageAR("Marker/chat.patt", "Gris", images[2]),
+    new ImageAR("Marker/pattern-marker.patt", "Cat", images[1]),
+    new ImageAR("Marker/pattern-AR.patt", "Mat", images[0])
+  ]
 
+
+  let mark = document.querySelector(`#Gris`)
   mark.addEventListener("markerFound", () => {
       showConfetti()
   })
