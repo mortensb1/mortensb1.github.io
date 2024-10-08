@@ -4,57 +4,13 @@ let mouseY
 let touchstartX = 0
 let touchendX = 0
 
-class ImageAR {
-  constructor(imageUrl, newId, newText, imageLink) {
-    this.textArr = newText;
-    this.textNr = 0;
-    this.createImage(imageUrl, newId, imageLink)
-    
-  }
-  
-  nextText() {
-    this.textNr++
-    if (this.textNr >= this.textArr.length) this.textNr = 0;
-    this.aText.setAttribute("value",this.textArr[this.textNr])
-  }
-
-  change(newImage) {
-    this.aImage.setAttribute("src",newImage)
-  }
-
-  createImage(imageUrl, newId, imageLink) {
-    this.marker = document.createElement('a-marker');
-    this.scene = document.getElementById("scene");
-    this.marker.setAttribute("type", "pattern");
-    this.marker.setAttribute("preset", "custom");
-    this.marker.setAttribute("id",newId)
-    this.marker.setAttribute("url", imageUrl);
-    this.marker.setAttribute("smooth","true")
-    this.marker.setAttribute("smoothCount","10")
-    this.marker.setAttribute("smoothTolerance",".01")
-    this.marker.setAttribute("smoothThreshold","5")
-
-    this.aText = document.createElement('a-text');
-    this.aText.setAttribute("value",this.textArr[this.textNr])
-    this.aText.setAttribute("rotation","270 270 90")
-    this.aText.setAttribute("position","0 0 1.2")
-    this.aText.setAttribute("align","center")
-    this.marker.appendChild(this.aText)
-
-    this.aImage = document.createElement('a-image');
-    this.aImage.setAttribute("rotation","90 180 0")
-    this.aImage.setAttribute("position","0 0 0")
-    this.aImage.setAttribute("scale","2 2")
-    this.aImage.setAttribute("src",imageLink)
-    this.marker.appendChild(this.aImage)
-
-    this.scene.appendChild(this.marker)
-  }
-}
-
-setInterval(() => {
-
-}, 10)
+let images = [
+  {link: "Images/Cat.jpg", text: ["Dette er en kat", "Den er gul"]}, 
+  {link: "Images/Monumental_Figure.jpg", text: ["Dette er en gris", "Den er pink"]}, 
+  {link: "Images/abstrakt.jpg", text: ["Dette er et abstrakt billede", "Den er farver"]}, 
+  {link: "Images/autumn.jpg", text: ["Dette er et maleri", "Den er forskellige farver"]}, 
+  {link: "Images/VanGogh.jpg", text: ["Dette er Starry night", "Den er blaa"]}
+]
 
 function updateText(event) {
   image1.nextText();
@@ -64,19 +20,21 @@ function updateText(event) {
 
 }
 
-function changeImage(event) {
-  if (10 < event.clientX - mouseX || -10 > (event.clientX - mouseX)) {
-    image1.change("Images/Cat.jpg")
-    image2.change("Images/Monumental_Figure.jpg")
-  }
+function changeImage() {
+  image1.change(images[Math.floor(Math.random() * images.length)])
+  image2.change(images[Math.floor(Math.random() * images.length)])
 }
 
+function swipeMouse(event) {
+  if (10 < event.clientX - mouseX || -10 > (event.clientX - mouseX)) {
+    changeImage()
 
+  }
+}
     
-function checkDirection() {
+function swipeFinger() {
   if (touchendX < touchstartX || touchendX > touchstartX) {
-    image1.change("Images/Cat.jpg")
-    image2.change("Images/Monumental_Figure.jpg")
+    changeImage()
   }
 }
 
@@ -86,13 +44,12 @@ document.addEventListener('touchstart', e => {
 
 document.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX
-  checkDirection()
+  swipeFinger()
 })
 
 setTimeout(()=> {
-  image1 = new ImageAR("Marker/chat.patt", "Gris", ["Dette er en gris", "Den er pink"], "Images/Monumental_Figure.jpg")
-  image2 = new ImageAR("Marker/pattern-marker.patt", "Cat", ["Dette er en cat", "Den er gul"], "Images/Cat.jpg")
-
+  image1 = new ImageAR("Marker/chat.patt", "Gris", images[0])
+  image2 = new ImageAR("Marker/pattern-marker.patt", "Cat", images[1])
   let mark = document.querySelector(`#Gris`)
 
   mark.addEventListener("markerFound", () => {
