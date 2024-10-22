@@ -12,6 +12,10 @@ let images = [
   {link: "Images/VanGogh.jpg", text: ["Dette er Starry night", "Den er blaa"]}
 ]
 
+let markerlinks = [
+  "pattern-AR.patt", "pattern-marker.patt", "chat.patt"
+]
+
 function updateText(event) {
   for (let i = 0; i < markers.length; i++) {
     markers[i].nextText();
@@ -50,18 +54,26 @@ document.addEventListener('touchend', e => {
 })
 
 setTimeout(()=> {
-  markers = [
-    new ImageAR("Marker/chat.patt", "Gris", images[2]),
-    new ImageAR("Marker/pattern-marker.patt", "Cat", images[1]),
-    new ImageAR("Marker/pattern-AR.patt", "Mat", images[0])
-  ]
+  markers = []
+  for (let i = 0; i < markerlinks.length; i++) {
+    markers.push(new ImageAR("Marker/"+markerlinks[i], String(Math.random(0,100)), images[i]))
+  }
+  console.log(markers)
+  // markers = [
+  //   new ImageAR("Marker/chat.patt", "Gris", images[2]),
+  //   new ImageAR("Marker/pattern-marker.patt", "Cat", images[1]),
+  //   new ImageAR("Marker/pattern-AR.patt", "Mat", images[0])
+  // ]
 
-
-  let mark = document.querySelector(`#Gris`)
-  mark.addEventListener("markerFound", () => {
-      showConfetti()
-  })
+  // let mark = document.querySelector(`#Gris`)
+  // mark.addEventListener("markerFound", () => {
+  //     showConfetti()
+  // })
 },1)
+
+setTimeout(()=> {
+
+},4000)
 
 function showConfetti() {
   confetti({

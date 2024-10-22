@@ -6,9 +6,18 @@
     <script src="main.js"></script>
     <script src="imageClass.js"></script>
     <body style="margin : 0px; overflow: hidden;">
+        <div style="position: absolute;
+        top: 1vw;
+        left: 27vw;
+        z-index: 3;
+        font-size: 5vw;">Swipe for nye billeder</div>
+        <div style="position: absolute;
+        top: 6vw;
+        left: 30vw;
+        z-index: 3;
+        font-size: 5vw;">Tryk for mere info</div>
         <a-scene embedded arjs id="scene" onmousedown="updateText(event)" onmouseup="swipeMouse(event)">
-
-        <!-- <a-marker preset="hiro" 
+            <!-- <a-marker preset="hiro" 
             smooth="true"
             smoothCount="10"
             smoothTolerance=".01"
