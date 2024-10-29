@@ -5,7 +5,7 @@ let touchstartX = 0
 let touchendX = 0
 
 let images = [
-  {link: "Images/Cat.jpg", text: ["Dette er en kat", "Den er gul"]}, 
+  {link: "Images/Mona Lisa.jpg", text: ["Mona Lisa (1503)", "Den er malet af Leonardo Da Vinci"]}, 
   {link: "Images/Monumental_Figure.jpg", text: ["Dette er en gris", "Den er pink"]}, 
   {link: "Images/abstrakt.jpg", text: ["Dette er et abstrakt billede", "Den er farver"]}, 
   {link: "Images/autumn.jpg", text: ["Dette er et maleri", "Den er forskellige farver"]}, 
@@ -13,7 +13,7 @@ let images = [
 ]
 
 let markerlinks = [
-  "pattern-AR.patt", "pattern-marker.patt", "chat.patt"
+  "pattern-marker.patt", "pattern-AR.patt", "chat.patt"
 ]
 
 function updateText(event) {
